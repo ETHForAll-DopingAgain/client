@@ -1,6 +1,6 @@
 import React from "react";
 import { Stack } from "@mui/material";
-
+import VideoInput from "./VideoInput";
 import { categories } from "../utils/constants";
 
 const Categories = ({ selectedCategory, setSelectedCategory }) => (
@@ -30,6 +30,8 @@ const Categories = ({ selectedCategory, setSelectedCategory }) => (
         </span>
       </button>
     ))}
+    <a href={"/upload"} style={{backgroundColor: "red", color: "white", padding: "10px", border: "1px solid white", position: "absolute", bottom: "2rem", width: "6rem", fontSize: "1rem"}}><b>Upload Video</b></a>
+
   </Stack>
 );
 
