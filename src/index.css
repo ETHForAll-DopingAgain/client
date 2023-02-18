@@ -91,3 +91,46 @@ a {
     width:200px;
   }
 }
+
+.VideoInput{
+  height: 100vh;
+  background-image: url("https://www.google.com/url?sa=i&url=https%3A%2F%2Funsplash.com%2Fs%2Fphotos%2Fdark-plant&psig=AOvVaw21gklsw6DGd3j5hFjRfgLZ&ust=1676844256180000&source=images&cd=vfe&ved=0CA8QjRxqFwoTCNDoouOJoP0CFQAAAAAdAAAAABAT");
+}
+
+.vidForm{
+  display: flex;
+  align-items: center;
+  background-color: white;
+  justify-content: center;
+  flex-direction: column;
+  height: 70vh;
+  width: 30%;
+  margin: auto;
+  border-radius: 2rem;
+  box-shadow: 2px 2px 20px rgb(253, 234, 234);
+}
+
+.vidBtn{
+  background-color: #FC1503;
+  color: white;
+  border: none;
+  outline: none;
+  padding: 10px 20px;
+  border-radius: 20px;
+  margin: 10px;
+  cursor: pointer;
+}
+
+.vidText{
+  border: 1px solid #ccc;
+  display: inline-block;
+  padding: 6px 12px;
+}
+
+input[type="file"] {
+  margin-left: 5rem;
+}
+
+.red{
+  color:red
+}

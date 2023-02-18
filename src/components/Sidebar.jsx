@@ -1,7 +1,7 @@
 import React from "react";
 import { Stack } from "@mui/material";
-import VideoInput from "./VideoInput";
 import { categories } from "../utils/constants";
+import GraphicEqIcon from "@mui/icons-material/GraphicEq";
 
 const Categories = ({ selectedCategory, setSelectedCategory }) => (
   <Stack
@@ -30,7 +30,7 @@ const Categories = ({ selectedCategory, setSelectedCategory }) => (
         </span>
       </button>
     ))}
-    <a href={"/upload"} style={{backgroundColor: "red", color: "white", padding: "10px", border: "1px solid white", position: "absolute", bottom: "2rem", width: "6rem", fontSize: "1rem"}}><b>Upload Video</b></a>
+    <a href={"/upload"} style={{display: "flex", justifyContent:"center", alignItems:"center", backgroundColor: "red", color: "white", padding: "10px", border: "1px solid white", position: "absolute", bottom: "2rem", width: "6rem", fontSize: "1rem", }}><GraphicEqIcon /><b> UPLOAD</b></a>
 
   </Stack>
 );
