@@ -1,4 +1,4 @@
-import React, { forwardRef, useState } from "react";
+import React, { forwardRef} from "react";
 import PropTypes from "prop-types";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles, withStyles } from "@material-ui/core/styles";
@@ -153,7 +153,7 @@ const Controls = forwardRef(
           >
             <Grid item>
               <Typography variant="h5" style={{ color: "#fff" }}>
-                Title of the Video
+                Elephant
               </Typography>
             </Grid>
             <Grid item></Grid>

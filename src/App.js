@@ -1,37 +1,19 @@
-import React, { useState, useRef, useEffect } from "react";
-import { findDOMNode } from "react-dom";
-
-import AppBar from "@material-ui/core/AppBar";
-import Toolbar from "@material-ui/core/Toolbar";
+import React, { useState, useRef } from "react";
 import Typography from "@material-ui/core/Typography";
 import Container from "@material-ui/core/Container";
 import ReactPlayer from "react-player";
-import { makeStyles, withStyles } from "@material-ui/core/styles";
-
-import Slider from "@material-ui/core/Slider";
-import Tooltip from "@material-ui/core/Tooltip";
-import Grid from "@material-ui/core/Grid";
-import Paper from "@material-ui/core/Paper";
-import VolumeUp from "@material-ui/icons/VolumeUp";
-import VolumeDown from "@material-ui/icons/VolumeDown";
-import VolumeMute from "@material-ui/icons/VolumeOff";
-import FullScreen from "@material-ui/icons/Fullscreen";
-import Popover from "@material-ui/core/Popover";
+import { makeStyles } from "@material-ui/core/styles";
 import screenful from "screenfull";
 import Controls from "./components/Controls";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEye } from "@fortawesome/free-solid-svg-icons";
+const eye = <FontAwesomeIcon icon={faEye} />;
 
 const useStyles = makeStyles((theme) => ({
   playerWrapper: {
     width: "100%",
-    background: "rgba(201,202,203,204,1)",
     position: "relative",
-    // "&:hover": {
-    //   "& $controlsWrapper": {
-    //     visibility: "visible",
-    //   },
-    // },
   },
-
   controlsWrapper: {
     visibility: "hidden",
     position: "absolute",
@@ -57,25 +39,18 @@ const useStyles = makeStyles((theme) => ({
   bottomWrapper: {
     display: "flex",
     flexDirection: "column",
-
-    // background: "rgba(0,0,0,0.6)",
-    // height: 60,
     padding: theme.spacing(2),
   },
-
   bottomControls: {
     display: "flex",
     alignItems: "center",
     justifyContent: "space-between",
-    // height:40,
   },
-
   button: {
     margin: theme.spacing(1),
   },
   controlIcons: {
     color: "#777",
-
     fontSize: 50,
     transform: "scale(0.9)",
     "&:hover": {
@@ -83,57 +58,16 @@ const useStyles = makeStyles((theme) => ({
       transform: "scale(1)",
     },
   },
-
   bottomIcons: {
     color: "#999",
     "&:hover": {
       color: "#fff",
     },
   },
-
   volumeSlider: {
     width: 100,
   },
 }));
-
-const PrettoSlider = withStyles({
-  root: {
-    height: 8,
-  },
-  thumb: {
-    height: 24,
-    width: 24,
-    backgroundColor: "#fff",
-    border: "2px solid currentColor",
-    marginTop: -8,
-    marginLeft: -12,
-    "&:focus, &:hover, &$active": {
-      boxShadow: "inherit",
-    },
-  },
-  active: {},
-  valueLabel: {
-    left: "calc(-50% + 4px)",
-  },
-  track: {
-    height: 8,
-    borderRadius: 4,
-  },
-  rail: {
-    height: 8,
-    borderRadius: 4,
-  },
-})(Slider);
-
-function ValueLabelComponent(props) {
-  const { children, open, value } = props;
-
-  return (
-    <Tooltip open={open} enterTouchDelay={0} placement="top" title={value}>
-      {children}
-    </Tooltip>
-  );
-}
 
 const format = (seconds) => {
   if (isNaN(seconds)) {
@@ -153,17 +87,12 @@ let count = 0;
 
 function App() {
   const classes = useStyles();
-  const [showControls, setShowControls] = useState(false);
-  // const [count, setCount] = useState(0);
-  const [anchorEl, setAnchorEl] = React.useState(null);
   const [timeDisplayFormat, setTimeDisplayFormat] = React.useState("normal");
-  // const [bookmarks, setBookmarks] = useState([]);
   const [state, setState] = useState({
     pip: false,
     playing: true,
     controls: false,
     light: false,
-
     muted: true,
     played: 0,
     duration: 0,
@@ -179,15 +108,12 @@ function App() {
   const canvasRef = useRef(null);
   const {
     playing,
-    controls,
     light,
-
     muted,
     loop,
     playbackRate,
     pip,
     played,
-    seeking,
     volume,
   } = state;
 
@@ -208,7 +134,7 @@ function App() {
       controlsRef.current.style.visibility = "hidden";
       count = 0;
     }
-    if (controlsRef.current.style.visibility == "visible") {
+    if (controlsRef.current.style.visibility === "visible") {
       count += 1;
     }
     if (!state.seeking) {
@@ -265,7 +191,7 @@ function App() {
 
   const handleDisplayFormat = () => {
     setTimeDisplayFormat(
-      timeDisplayFormat == "normal" ? "remaining" : "normal"
+      timeDisplayFormat === "normal" ? "remaining" : "normal"
     );
   };
 
@@ -277,31 +203,6 @@ function App() {
     setState({ ...state, muted: !state.muted });
   };
 
-  // const addBookmark = () => {
-  //   const canvas = canvasRef.current;
-  //   canvas.width = 160;
-  //   canvas.height = 90;
-  //   const ctx = canvas.getContext("2d");
-
-  //   ctx.drawImage(
-  //     playerRef.current.getInternalPlayer(),
-  //     0,
-  //     0,
-  //     canvas.width,
-  //     canvas.height
-  //   );
-  //   const dataUri = canvas.toDataURL();
-  //   canvas.width = 0;
-  //   canvas.height = 0;
-  //   const bookmarksCopy = [...bookmarks];
-  //   bookmarksCopy.push({
-  //     time: playerRef.current.getCurrentTime(),
-  //     display: format(playerRef.current.getCurrentTime()),
-  //     image: dataUri,
-  //   });
-  //   setBookmarks(bookmarksCopy);
-  // };
-
   const currentTime =
     playerRef && playerRef.current
       ? playerRef.current.getCurrentTime()
@@ -310,7 +211,7 @@ function App() {
   const duration =
     playerRef && playerRef.current ? playerRef.current.getDuration() : "00:00";
   const elapsedTime =
-    timeDisplayFormat == "normal"
+    timeDisplayFormat === "normal"
       ? format(currentTime)
       : `-${format(duration - currentTime)}`;
 
@@ -318,13 +219,13 @@ function App() {
 
   return (
     <>
-      <AppBar position="fixed">
-        <Toolbar>
-          <Typography>Doping-Again</Typography>
-        </Toolbar>
-      </AppBar>
-      <Toolbar />
-      <Container>
+    <div style={{display: "flex"}}>
+
+      <Typography className="typo" style={{color: "white", fontSize: "2rem", fontFamily: "'Pacifico', cursive", margin:"1rem", marginRight: "-4rem", marginBottom:"3rem", display:"block"}}><b>Multube</b></Typography>
+      <div style={{color: "white", marginLeft: "-4.5rem", marginTop: "12rem", padding: "1.5rem", height: "32rem", boxShadow: "2px 0px 15px rgba(135,110,160,255)"}}>
+      <i>{eye}</i>
+      </div>
+      <Container style={{border: "5px solid white", padding: "2rem", borderRadius : "1rem", height: "47rem", marginTop: "6rem", marginBottom: "7rem", boxShadow: "0px 0px 50px 5px rgba(135,110,160,255)"}}>
         <div
           onMouseMove={handleMouseMove}
           onMouseLeave={hanldeMouseLeave}
@@ -332,6 +233,7 @@ function App() {
           className={classes.playerWrapper}
         >
           <ReactPlayer
+            style={{borderRadius: "1rem"}}
             ref={playerRef}
             width="100%"
             height="100%"
@@ -378,31 +280,26 @@ function App() {
             volume={volume}
           />
         </div>
-
-        {/* <Grid container style={{ marginTop: 20 }} spacing={3}>
-          {bookmarks.map((bookmark, index) => (
-            <Grid key={index} item>
-              <Paper
-                onClick={() => {
-                  playerRef.current.seekTo(bookmark.time);
-                  controlsRef.current.style.visibility = "visible";
-
-                  setTimeout(() => {
-                    controlsRef.current.style.visibility = "hidden";
-                  }, 1000);
-                }}
-                elevation={3}
-              >
-                <img crossOrigin="anonymous" src={bookmark.image} />
-                <Typography variant="body2" align="center">
-                  bookmark at {bookmark.display}
-                </Typography>
-              </Paper>
-            </Grid>
-          ))}
-        </Grid> */}
         <canvas ref={canvasRef} />
       </Container>
+        <div style={{display: "flex", flexDirection:"column", height: "53rem", justifyContent: "space-around", margin: "2rem", width: "18rem", marginTop: "3rem", marginRight: "3rem"}}>
+        <Typography variant="h5" style={{ color: "#fff", textShadow: "10px 5px 20px white" }}>
+                Watch Next
+              </Typography>
+          <div style={{width: "100%", border: "3px solid white", borderRadius: "1rem", height: "70%", margin: "1rem 0"}}>
+            {/* video */}
+          </div>
+          <div style={{width: "100%", border: "3px solid white", borderRadius: "1rem", height: "70%", margin: "1rem 0"}}>
+
+          </div>
+          <div style={{width: "100%", border: "3px solid white", borderRadius: "1rem", height: "70%", margin: "1rem 0"}}>
+
+          </div>
+          <div style={{width: "100%", border: "3px solid white", borderRadius: "1rem", height: "70%", margin: "1rem 0"}}>
+
+          </div>
+        </div>
+    </div>
     </>
   );
 }
