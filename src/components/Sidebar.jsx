@@ -30,8 +30,6 @@ const Categories = ({ selectedCategory, setSelectedCategory }) => (
         </span>
       </button>
     ))}
-    <a href={"/stream"} style={{display: "flex", justifyContent:"center", alignItems:"center", backgroundColor: "red", color: "white", padding: "10px", border: "1px solid white", position: "absolute", bottom: "6rem", width: "6rem", fontSize: "1rem", }}><GraphicEqIcon /><b> START STREAM</b></a>
-    <a href={"/upload"} style={{display: "flex", justifyContent:"center", alignItems:"center", backgroundColor: "red", color: "white", padding: "10px", border: "1px solid white", position: "absolute", bottom: "2rem", width: "6rem", fontSize: "1rem", }}><GraphicEqIcon /><b> UPLOAD</b></a>
 
   </Stack>
 );

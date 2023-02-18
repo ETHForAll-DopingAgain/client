@@ -11,15 +11,13 @@ export const logo =
   "https://t3.ftcdn.net/jpg/04/00/47/88/360_F_400478854_eAL87XQTJyakxh1XSadIxSojtBjm7z8b.jpg";
 
 export const categories = [
-  { name: "New", icon: <HomeIcon /> },
-  { name: "ReactJS", icon: <CodeIcon /> },
-  { name: "NextJS", icon: <CodeIcon /> },
+  { name: "Live", icon: <LiveTvIcon /> },
+  { name: "Start Stream", icon: <CodeIcon /> },
+  { name: "Upload", icon: <CodeIcon /> },
   { name: "Music", icon: <MusicNoteIcon /> },
   { name: "Education", icon: <SchoolIcon /> },
   { name: "Movie", icon: <OndemandVideoIcon /> },
   { name: "Gaming", icon: <SportsEsportsIcon /> },
-  { name: "Live", icon: <LiveTvIcon /> },
-  { name: "Sport", icon: <FitnessCenterIcon /> },
 ];
 
 export const demoThumbnailUrl = "https://i.ibb.co/G2L2Gwp/API-Course.png";
