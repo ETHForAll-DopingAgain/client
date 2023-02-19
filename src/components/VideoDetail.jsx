@@ -3,9 +3,54 @@ import { Link, useParams } from "react-router-dom";
 import ReactPlayer from "react-player";
 import { Typography, Box, Stack } from "@mui/material";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
-
+import { ABI } from "./abi";
+import { providers, ethers } from "ethers";
 import { Videos, Loader } from "./";
 import { fetchFromAPI } from "../utils/fetchFromAPI";
+
+import {
+  createReactClient,
+  LivepeerConfig,
+  studioProvider,
+} from "@livepeer/react";
+
+import { Player } from "@livepeer/react";
+const client = createReactClient({
+  provider: studioProvider({
+    apiKey: process.env.REACT_APP_livepeer,
+  }),
+});
+
+const livepeerTheme = {
+  colors: {
+    accent: "rgb(0, 145, 255)",
+    containerBorderColor: "rgba(0, 145, 255, 0.9)",
+  },
+  fonts: {
+    display: "Inter",
+  },
+};
+const playbackId = "666899k9r9t36tnh";
+
+export function Livepeer() {
+  return (
+    <Player
+      playbackId={playbackId}
+      loop
+      showTitle={false}
+    />
+  );
+}
+
+const VideoPlayer = () => {
+  return (
+    <>
+      <LivepeerConfig client={client} theme={livepeerTheme}>
+        <Livepeer />
+      </LivepeerConfig>
+    </>
+  );
+};
 
 const VideoDetail = () => {
   const [videoDetail, setVideoDetail] = useState(null);
@@ -29,7 +74,8 @@ const VideoDetail = () => {
       <Stack direction={{ xs: "column", md: "row" }}>
         <Box flex={1}>
           <Box sx={{ width: "100%", position: "sticky", top: "86px"}}>
-            <ReactPlayer url={`https://gateway.lighthouse.storage/ipfs/QmNb6cbYXgdTsSn6Gnn6fnaApEjubPtHDkyZ2fT2GowSWr`} className="react-player" controls />
+            {/* <ReactPlayer url={`https://gateway.lighthouse.storage/ipfs/QmNb6cbYXgdTsSn6Gnn6fnaApEjubPtHDkyZ2fT2GowSWr`} className="react-player" controls /> */}
+            <VideoPlayer />
             <Typography color="#fff" variant="h5" fontWeight="bold" p={2}>
               {title}
             </Typography>
