@@ -100,6 +100,14 @@ const UserProfile = () => {
       <Typography variant="subtitle2" color="gray"></Typography>
       </CardContent>
   </Card>
+  <button
+              className="primary-btn"
+              onClick={async () => {
+                await unsubscribe(item.hash);
+              }}
+            >
+              Delete Video
+            </button>
   </div>
 
     </Stack>
