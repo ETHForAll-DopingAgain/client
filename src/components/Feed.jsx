@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Box, Stack, Typography } from "@mui/material";
-import startStream from "../pages/startStream";
+import StartStream from "../pages/startStream";
 
 import { fetchFromAPI } from "../utils/fetchFromAPI";
 import { Videos, Sidebar } from "./";
@@ -12,7 +12,7 @@ const Feed = () => {
   let page;
   if(selectedCategory === "Live") {
   } else if(selectedCategory === "Start Stream") {
-    page = <startStream />;
+    page = <StartStream />;
   } else if(selectedCategory === "Upload") {
     page = <Videos videos={videos} />;
   } else if(selectedCategory === "Music") {
@@ -44,6 +44,7 @@ const Feed = () => {
           {selectedCategory} <span style={{ color: "#FC1503" }}></span>
         </Typography>
 
+        {/* <StartStream /> */}
         {page}
 
       </Box>
