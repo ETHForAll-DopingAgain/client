@@ -10,7 +10,6 @@ import {
   Feed,
   VideoInput,
   Stream,
-  // UserProfile,
   Subscribe,
 } from "./components";
 import Home from "./pages/Home";

@@ -15,11 +15,10 @@ export const categories = [
   { name: "Live", icon: <LiveTvIcon /> },
   { name: "Start Stream", icon: <CodeIcon /> },
   { name: "Upload", icon: <CodeIcon /> },
-  { name: "Music", icon: <MusicNoteIcon /> },
+  { name: "Subscriptions", icon: <SubscriptionsIcon /> },
   { name: "Education", icon: <SchoolIcon /> },
   { name: "Movie", icon: <OndemandVideoIcon /> },
   { name: "Gaming", icon: <SportsEsportsIcon /> },
-  { name: "My Subcriptions", icon: <SubscriptionsIcon /> },
 ];
 
 export const demoThumbnailUrl = "https://i.ibb.co/G2L2Gwp/API-Course.png";

@@ -15,16 +15,17 @@ const Feed = () => {
   } else if (selectedCategory === "Upload") {
     page = <Upload />;
   } else if (selectedCategory === "Music") {
-    page = <Videos videos={videos} />;
+    page = <Videos videos={videos} selectedCategory={selectedCategory} />;
   } else if (selectedCategory === "Education") {
-    page = <Videos videos={videos} />;
+    page = <Videos videos={videos} selectedCategory={selectedCategory} />;
   } else if (selectedCategory === "Movie") {
-    page = <Videos videos={videos} />;
+    page = <Videos videos={videos} selectedCategory={selectedCategory} />;
   } else if (selectedCategory === "Gaming") {
-    page = <Videos videos={videos} />;
-  } else {
+    page = <Videos videos={videos} selectedCategory={selectedCategory} />;
+  } else if (selectedCategory === "Subscriptions") {
+    page = <Videos videos={videos} selectedCategory={selectedCategory} />;
   }
-
+  console.log("feed path =>", selectedCategory);
   useEffect(() => {
     setVideos(
       JSON.parse(localStorage.getItem("videos")).IDs
