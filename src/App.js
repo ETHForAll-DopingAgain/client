@@ -18,13 +18,6 @@ import Arcana from "./pages/Auth";
 
 import UserProfile from "./components/UserProfile";
 
-  const path = window.location.href.split("/")[3];
-
-const App = () => {
-  const path = window.location.href.split("/")[3];
-
-  const path = window.location.href.split("/")[3];
-
 const App = () => {
   const path = window.location.href.split("/")[3];
 

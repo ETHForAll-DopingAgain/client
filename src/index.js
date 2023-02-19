@@ -1,9 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { AuthProvider } from '@arcana/auth';
-import React from "react";
-import ReactDOM from "react-dom/client";
-import { AuthProvider } from "@arcana/auth";
 import App from "./App";
 import { ProvideAuth } from "@arcana/auth-react";
 
