@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Box } from "@mui/material";
+import { Auth } from "@arcana/auth-react";
 
 import {
   ChannelDetail,
@@ -12,6 +13,8 @@ import {
   // UserProfile,
   Subscribe,
 } from "./components";
+import Home from "./pages/Home";
+import Arcana from "./pages/Auth";
 
 import UserProfile from "./components/UserProfile";
 
@@ -20,7 +23,9 @@ const App = () => (
     <Box sx={{ backgroundColor: "#000" }}>
       <Navbar />
       <Routes>
-        <Route exact path="/" element={<Feed />} />
+        <Route path="/" element={<Home />} />
+        <Route path="/auth" element={<Arcana />} />
+        <Route exact path="/feed" element={<Feed />} />
         <Route path="/upload" element={<VideoInput />} />
         <Route path="/stream" element={<Stream />} />
         <Route path="/subscribe" element={<Subscribe />} />

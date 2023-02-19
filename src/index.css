@@ -142,3 +142,28 @@ input[type="file"] {
 .true{
   background-color: rgb(211, 209, 209);
 }
+
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@100;300&family=Poppins&family=Roboto+Mono:wght@300&display=swap');
+
+.home {
+  height: 100vh;
+  width: 100vw;
+}
+
+.auth-btn {
+  background-color: rgb(128, 29, 29);
+  color: #ffffff;
+  font-family: 'Poppins', sans-serif;
+  font-size: 20px;
+  border: none;
+  border-radius: 8px;
+  height:60px;
+  width:180px;
+  margin: 40vh 0 0 40vw;
+  transition: 200ms linear;
+}
+
+.auth-btn:hover {
+  color: black;
+  background-color: rgb(159, 45, 45);
+}
