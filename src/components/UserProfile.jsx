@@ -13,6 +13,8 @@ const UserProfile = () => {
   const [email, setEmail] = useState(null);
   const [address, setAddress] = useState(null);
   const [pub_key, setPub_key] = useState(null);
+  const path = window.location.href.split("/")[3];
+  console.log("userprofile path =>", path)
 
 
   useEffect(() => {
@@ -33,17 +35,17 @@ const UserProfile = () => {
   } else if (selectedCategory === "Start Stream") {
     page = <startStream />;
   } else if (selectedCategory === "Upload") {
-    page = <Videos videos={videos} />;
+    page = <Videos videos={videos} path={path} />;
   } else if (selectedCategory === "Music") {
-    page = <Videos videos={videos} />;
+    page = <Videos videos={videos} path={path} />;
   } else if (selectedCategory === "Education") {
-    page = <Videos videos={videos} />;
+    page = <Videos videos={videos} path={path} />;
   } else if (selectedCategory === "Movie") {
-    page = <Videos videos={videos} />;
+    page = <Videos videos={videos} path={path} />;
   } else if (selectedCategory === "Gaming") {
-    page = <Videos videos={videos} />;
+    page = <Videos videos={videos} path={path} />;
   } else {
-    page = <Videos videos={videos} />;
+    page = <Videos videos={videos} path={path} />;
   }
 
   useEffect(() => {

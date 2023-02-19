@@ -39,6 +39,7 @@ const VideoCard = ({
     id: { videoId },
     snippet,
   },
+  path,
 }) => {
 const navigate = useNavigate();
 return(
@@ -100,7 +101,7 @@ return(
         {/* <CheckCircleIcon sx={{ fontSize: "12px", color: "gray", ml: "5px" }} /> */}
       </Typography>
       {/* </Link> */}
-      <Typography variant="subtitle2" color="gray">Subscribers: 6969</Typography>
+      { path == "user" &&<Typography variant="subtitle2" color="gray">Subscribers: 6969</Typography>}
     </CardContent>
   </Card>
 )
