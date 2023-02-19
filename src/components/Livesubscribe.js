@@ -5,7 +5,7 @@ import { providers, ethers } from "ethers";
 import { Token } from "@mui/icons-material";
 import { Framework } from "@superfluid-finance/sdk-core";
 import * as PushAPI from "@pushprotocol/restapi";
-const Subscribe = () => {
+const Livesubscribe = () => {
   const [active1, setActive1] = useState(false);
   const [active2, setActive2] = useState(false);
   const [token, setToken] = useState("");
@@ -83,7 +83,7 @@ const Subscribe = () => {
         },
         payload: {
           title: `Subscribed`,
-          body: `you have successfully subscribed to video succesfully`,
+          body: `you have successfully subscribed to live video succesfully`,
           cta: "",
           img: "",
         },
@@ -159,12 +159,12 @@ const Subscribe = () => {
         Tx Hash: ${tx.hash}
     `);
         });
- var len = JSON.parse(localStorage.getItem("videos")).IDs.length;
- var x = JSON.parse(localStorage.getItem("videos")).IDs[len - 1];
-          navigate(`/video/${x.playbackId}`, {
-              replace: true,
-            });
-
+      moneyRouter.on("livesubscribe", (id) => {
+        console.log("id", id);
+        navigate(`/video/${id}`, {
+          replace: true,
+        });
+      });
 
       await SubscribeNotifcation();
     } else {
@@ -242,4 +242,4 @@ const Subscribe = () => {
   );
 };
 
-export default Subscribe;
+export default Livesubscribe;

@@ -16,6 +16,19 @@ export const ABI = [
       {
         indexed: false,
         internalType: "string",
+        name: "liveplay",
+        type: "string",
+      },
+    ],
+    name: "livesubscribe",
+    type: "event",
+  },
+  {
+    anonymous: false,
+    inputs: [
+      {
+        indexed: false,
+        internalType: "string",
         name: "playback",
         type: "string",
       },
@@ -47,6 +60,19 @@ export const ABI = [
       },
     ],
     name: "addData",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        internalType: "string",
+        name: "pb",
+        type: "string",
+      },
+    ],
+    name: "addLive",
     outputs: [],
     stateMutability: "nonpayable",
     type: "function",
@@ -86,6 +112,53 @@ export const ABI = [
       },
     ],
     stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        internalType: "string",
+        name: "uid",
+        type: "string",
+      },
+    ],
+    name: "checkLiveSubscription",
+    outputs: [
+      {
+        internalType: "bool",
+        name: "",
+        type: "bool",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        internalType: "int96",
+        name: "flowRate",
+        type: "int96",
+      },
+      {
+        internalType: "contract ISuperToken",
+        name: "token",
+        type: "address",
+      },
+      {
+        internalType: "address",
+        name: "receiver",
+        type: "address",
+      },
+      {
+        internalType: "string",
+        name: "uid",
+        type: "string",
+      },
+    ],
+    name: "createLiveStream",
+    outputs: [],
+    stateMutability: "nonpayable",
     type: "function",
   },
   {
@@ -159,6 +232,42 @@ export const ABI = [
       },
     ],
     name: "deleteData",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        internalType: "string",
+        name: "pb",
+        type: "string",
+      },
+    ],
+    name: "deleteLive",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        internalType: "contract ISuperToken",
+        name: "token",
+        type: "address",
+      },
+      {
+        internalType: "address",
+        name: "receiver",
+        type: "address",
+      },
+      {
+        internalType: "string",
+        name: "uid",
+        type: "string",
+      },
+    ],
+    name: "deleteLiveStream",
     outputs: [],
     stateMutability: "nonpayable",
     type: "function",

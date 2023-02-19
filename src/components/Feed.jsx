@@ -1,15 +1,17 @@
 import React, { useEffect, useState } from "react";
 import { Box, Stack, Typography } from "@mui/material";
 import StartStream from "../pages/startStream";
+import Live from "../pages/live";
 import Upload from "../components/VideoInput";
 import ReactPlayer from "react-player";
 import { fetchFromAPI } from "../utils/fetchFromAPI";
 import { Videos, Sidebar } from "./";
 const Feed = () => {
-  const [selectedCategory, setSelectedCategory] = useState("Live");
+  const [selectedCategory, setSelectedCategory] = useState("");
   const [videos, setVideos] = useState(null);
   let page;
   if (selectedCategory === "Live") {
+    page=<Live />
   } else if (selectedCategory === "Start Stream") {
     page = <StartStream />;
   } else if (selectedCategory === "Upload") {

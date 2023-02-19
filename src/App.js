@@ -12,6 +12,8 @@ import {
   Stream,
   Subscribe,
 } from "./components";
+
+import Livesubscribe from "./components/Livesubscribe";
 import Home from "./pages/Home";
 import Arcana from "./pages/Auth";
 
@@ -31,6 +33,7 @@ const App = () => {
           <Route path="/upload" element={<VideoInput />} />
           <Route path="/stream" element={<Stream />} />
           <Route path="/subscribe" element={<Subscribe />} />
+          <Route path="/livesubscribe" element={<Livesubscribe />} />
           <Route path="/video/:id" element={<VideoDetail />} />
           <Route path="/channel/:id" element={<ChannelDetail />} />
           <Route path="/search/:searchTerm" element={<SearchFeed />} />

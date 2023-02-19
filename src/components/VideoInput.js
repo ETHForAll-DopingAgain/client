@@ -98,6 +98,7 @@ const VideoInput = () => {
       hash: output.data.Hash,
       id: response.data.asset.id,
     });
+    console.log("playbackid", response.data.asset.playbackId)
     console.log("videos", videos)
     localStorage.setItem("videos", JSON.stringify(videos));
     await addToChain
@@ -111,7 +112,6 @@ const VideoInput = () => {
     console.log(
       "Visit at https://gateway.lighthouse.storage/ipfs/" + output.data.Hash
     );
-    navigate("/", { replace: true });
   };
 
   return (

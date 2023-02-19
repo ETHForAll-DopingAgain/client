@@ -39,7 +39,7 @@ const Videos = ({ videos, direction, selectedCategory }) => {
   };
 
   const unsubscribe = async (uid) => {
-    console.log("unsubscribe called", uid)
+    console.log("unsubscribe called", uid);
     const accounts = await window.ethereum.request({
       method: "eth_requestAccounts",
     });
@@ -69,6 +69,9 @@ const Videos = ({ videos, direction, selectedCategory }) => {
         console.log("added on chain tx:", tx);
       });
     await unsubscribeNotifcation();
+    videos = JSON.parse(localStorage.getItem("videos"));
+    videos.IDs.pop();
+    localStorage.setItem("videos", JSON.stringify(videos));
   };
   return (
     <Stack

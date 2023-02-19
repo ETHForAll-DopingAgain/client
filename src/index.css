@@ -206,3 +206,9 @@ input[type="file"] {
   width: 40%;
   
 }
+
+.liveDiv{
+  height: 30vh;
+  width: 30vw;
+  border: 2px solid white;
+}

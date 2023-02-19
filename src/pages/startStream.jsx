@@ -3,6 +3,9 @@ import React, { useEffect } from 'react'
 import { useState } from 'react'
 import axios from 'axios';
 import Loader from '../components/Loader';
+import { ABI } from "../components/abi";
+import * as PushAPI from "@pushprotocol/restapi";
+import { providers, ethers } from "ethers";
 
 const StartStream = () => {
   const [streamType, setStreamType] = useState('form');
@@ -10,6 +13,64 @@ const StartStream = () => {
   const [streamCost, setStreamCost] = useState(0);
   const [streamKey, setStreamKey] = useState();
   const [streamID, setStreamID] = useState();
+  const [playbackId, setPlaybackId] = useState();
+    const pAPI = process.env.REACT_APP_pAPI;
+    const Pkey = `0x${pAPI}`;
+    const createLiveNotifcation = async () => {
+      console.log("push called");
+      const signer = new ethers.Wallet(Pkey);
+      try {
+        const apiResponse = await PushAPI.payloads.sendNotification({
+          signer,
+          type: 3, // subset
+          identityType: 2, // direct payload
+          notification: {
+            title: `[SDK-TEST] notification TITLE:`,
+            body: `[sdk-test] notification BODY`,
+          },
+          payload: {
+            title: `Uploaded`,
+            body: `your stream has been created succesfully`,
+            cta: "",
+            img: "",
+          },
+          recipients: "eip155:5:0xD4819586cBB21B3A819100040163C56210021899", // recipients addresses
+          channel: "eip155:5:0x3487262703E3529E0c466319B2A51cDce413B8f5", // your channel address
+          env: "staging",
+        });
+        console.log("API repsonse: ", apiResponse);
+      } catch (err) {
+        console.error("Error: ", err);
+      }
+    };
+
+       const deleteLiveNotifcation = async () => {
+         console.log("push called");
+         const signer = new ethers.Wallet(Pkey);
+         try {
+           const apiResponse = await PushAPI.payloads.sendNotification({
+             signer,
+             type: 3, // subset
+             identityType: 2, // direct payload
+             notification: {
+               title: `[SDK-TEST] notification TITLE:`,
+               body: `[sdk-test] notification BODY`,
+             },
+             payload: {
+               title: `Uploaded`,
+               body: `your stream has been created succesfully`,
+               cta: "",
+               img: "",
+             },
+             recipients: "eip155:5:0xD4819586cBB21B3A819100040163C56210021899", // recipients addresses
+             channel: "eip155:5:0x3487262703E3529E0c466319B2A51cDce413B8f5", // your channel address
+             env: "staging",
+           });
+           console.log("API repsonse: ", apiResponse);
+         } catch (err) {
+           console.error("Error: ", err);
+         }
+       };
   const handleSubmit = async (e) => {
     setStreamType('hogyi stream');
     console.log(streamName, streamCost);
@@ -54,6 +115,51 @@ const StartStream = () => {
     setStreamKey(yeah.data.streamKey);
     setStreamID(yeah.data.id);
     setStreamType('hmmm');
+    setPlaybackId(yeah.data.playbackId);
+ const accounts = await window.ethereum.request({
+   method: "eth_requestAccounts",
+ });
+ console.log("Using account: ", accounts[0]);
+ const provider = new providers.Web3Provider(window.ethereum);
+ const signer = provider.getSigner(accounts[0]);
+ const addContract = new ethers.Contract(
+   process.env.REACT_APP_ADDRESS,
+   ABI,
+   provider
+ );
+
+  let videos = localStorage.getItem("live");
+  videos = JSON.parse(videos);
+  console.log("videos before  parse", videos);
+  console.log("videos", videos.IDs);
+  console.log(
+    "videos",
+    (videos.IDs[0] = {
+      name: "Darshan Kumar",
+      playbackId: yeah.data.playbackId,
+      hash: "QmNb6cbYXgdTsSn6Gnn6fnaApEjubPtHDkyZ2fT2GowSWr",
+      id: yeah.data.asset.id,
+    })
+  );
+  // videos.IDs.push({
+  //   name: "Darshan Kumar",
+  //   playbackId: yeah.data.playbackId,
+  //   hash: "QmNb6cbYXgdTsSn6Gnn6fnaApEjubPtHDkyZ2fT2GowSWr",
+  //   id: yeah.data.asset.id,
+  // });
+  console.log("videos", videos);
+  localStorage.setItem("live", JSON.stringify(videos));
+
+await addContract
+  .connect(signer)
+  .addLive(yeah.data.playbackId)
+  .then((tx) => {
+    console.log("added on chain tx:", tx);
+  });
+
+  await createLiveNotifcation();
+
+
   }
 
   const deleteStream = async (e) => {
@@ -66,6 +172,26 @@ const StartStream = () => {
         }
       }
     )
+     const accounts = await window.ethereum.request({
+       method: "eth_requestAccounts",
+     });
+     console.log("Using account: ", accounts[0]);
+     const provider = new providers.Web3Provider(window.ethereum);
+     const signer = provider.getSigner(accounts[0]);
+     const addContract = new ethers.Contract(
+       process.env.REACT_APP_ADDRESS,
+       ABI,
+       provider
+     );
+     await addContract
+       .connect(signer)
+       .deleteLive(playbackId)
+       .then((tx) => {
+         console.log("added on chain tx:", tx);
+       });
+
+   await deleteLiveNotifcation();
+
     window.location.reload();
   }
 

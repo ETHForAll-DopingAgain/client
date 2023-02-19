@@ -10,6 +10,7 @@ const Navbar = () => {
   const path = window.location.href.split("/")[3];
   console.log(path)
   const IDs = localStorage.getItem("videos");
+  const h8uehue = localStorage.getItem("live");
   console.log(IDs);
   const auth = useAuth();
   const isloggedIn = auth.isLoggedIn;
@@ -18,6 +19,9 @@ const Navbar = () => {
 
   if (!IDs) {
     localStorage.setItem("videos", JSON.stringify({ IDs: [] }));
+  }
+  if(!h8uehue){
+    localStorage.setItem("live", JSON.stringify({ IDs: [] }));
   }
 
   return (
