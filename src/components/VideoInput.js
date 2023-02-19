@@ -96,6 +96,7 @@ const VideoInput = () => {
       name: title,
       playbackId: response.data.asset.playbackId,
       hash: output.data.Hash,
+      id: response.data.asset.id,
     });
     console.log("videos", videos)
     localStorage.setItem("videos", JSON.stringify(videos));

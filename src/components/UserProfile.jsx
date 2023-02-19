@@ -11,6 +11,7 @@ import { Card, CardContent, CardMedia } from "@mui/material";
 import ReactPlayer from "react-player";
 import { providers, ethers } from "ethers";
 import * as PushAPI from "@pushprotocol/restapi";
+import axios from "axios";
 
 const UserProfile = () => {
   const [selectedCategory, setSelectedCategory] = useState(null);
@@ -22,8 +23,8 @@ const UserProfile = () => {
   const [pub_key, setPub_key] = useState(null);
   const path = window.location.href.split("/")[3];
   console.log("userprofile path =>", path);
-   const pAPI = process.env.REACT_APP_pAPI;
-   const Pkey = `0x${pAPI}`;
+  const pAPI = process.env.REACT_APP_pAPI;
+  const Pkey = `0x${pAPI}`;
   const deleteNotifcation = async () => {
     console.log("push called");
     const signer = new ethers.Wallet(Pkey);
@@ -70,6 +71,13 @@ const UserProfile = () => {
       .then((tx) => {
         console.log("added on chain tx:", tx);
       });
+    axios.delete('https://livepeer.studio/api/asset/'+x.id,
+    {
+      headers: {
+        "Authorization": "Bearer ee2c5c83-3c17-4f0d-84e7-373e9b401eab"
+      }
+    })
+    //remove from local storage here
     await deleteNotifcation();
   };
 
@@ -183,7 +191,7 @@ const UserProfile = () => {
             <Typography variant="subtitle2" color="gray"></Typography>
           </CardContent>
         </Card>
-        <button className="primary-btn" onClick={async () => { await deleteVideo(x.hash);}}>
+        <button className="primary-btn" onClick={async () => { await deleteVideo(x.hash, x.id); }}>
           Delete Video
         </button>
       </div>
