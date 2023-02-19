@@ -1,4 +1,4 @@
-import { Stack, Avatar, AssignmentIcon } from "@mui/material";
+import { Stack, Avatar } from "@mui/material";
 import { Link } from "react-router-dom";
 
 import { logo } from "../utils/constants";
@@ -13,7 +13,10 @@ const Navbar = () => {
       </Link>
       {path !== "user" &&
         <SearchBar />}
+      {/* <Avatar alt="Remy Sharp" src="/static/images/avatar.jpg" sx={{ width: 40, height: 40, bgcolor:"green" }} /> */}
+      <Link to="/user">
       <Avatar alt="Remy Sharp" src="/static/images/avatar.jpg" sx={{ width: 40, height: 40, bgcolor:"green" }} />
+      </Link>
     </Stack>
   );
 };

@@ -1,7 +1,7 @@
 import React from "react";
 import { Stack } from "@mui/material";
 import { categories } from "../utils/constants";
-import GraphicEqIcon from "@mui/icons-material/GraphicEq";
+//import GraphicEqIcon from "@mui/icons-material/GraphicEq";
 
 const Categories = ({ selectedCategory, setSelectedCategory }) => (
   <Stack
