@@ -69,7 +69,7 @@ const UserProfile = () => {
             <Stack sx={{ flexDirection: 'row' }} gap={2}>
               <Typography variant="subtitle1" color="gray">Address: {address}</Typography>
               <Typography variant="subtitle1" color="gray">||</Typography>
-              <Typography variant="subtitle1" color="gray">Public Key: {pub_key} </Typography>
+              <Typography variant="subtitle1" color="gray">Public Key: {pub_key.slice(0,40)}... </Typography>
             </Stack>
           </Stack>
         </Stack>
