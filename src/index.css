@@ -150,7 +150,7 @@ input[type="file"] {
   width: 100vw;
 }
 
-.auth-btn {
+.primary-btn {
   background-color: rgb(128, 29, 29);
   color: #ffffff;
   font-family: 'Poppins', sans-serif;
@@ -163,9 +163,27 @@ input[type="file"] {
   transition: 200ms linear;
 }
 
-.auth-btn:hover {
+.primary-btn:hover {
   color: black;
   background-color: rgb(159, 45, 45);
+}
+
+.sub-btn {
+  background-color: rgb(128, 29, 29);
+  color: white;
+  font-family: 'Poppins', sans-serif;
+  font-size: 16px;
+  border: none;
+  border-radius: 8px;
+  height:32px;
+  width:180px;
+  margin: 10px 0 0 140px;
+  transition: 200ms linear;
+}
+
+.sub-btn:hover {
+  background-color: rgb(159, 45, 45);
+  color: black;
 }
 
 .playerDiv{

@@ -6,6 +6,7 @@ import SportsEsportsIcon from "@mui/icons-material/SportsEsports";
 import LiveTvIcon from "@mui/icons-material/LiveTv";
 import SchoolIcon from "@mui/icons-material/School";
 import FitnessCenterIcon from "@mui/icons-material/FitnessCenter";
+import SubscriptionsIcon from "@mui/icons-material/Subscriptions";
 
 export const logo =
   "https://t3.ftcdn.net/jpg/04/00/47/88/360_F_400478854_eAL87XQTJyakxh1XSadIxSojtBjm7z8b.jpg";
@@ -18,6 +19,7 @@ export const categories = [
   { name: "Education", icon: <SchoolIcon /> },
   { name: "Movie", icon: <OndemandVideoIcon /> },
   { name: "Gaming", icon: <SportsEsportsIcon /> },
+  { name: "My Subcriptions", icon: <SubscriptionsIcon /> },
 ];
 
 export const demoThumbnailUrl = "https://i.ibb.co/G2L2Gwp/API-Course.png";

@@ -9,7 +9,7 @@ function getLogin() {
 function Home() {
     return (
         <div className="home" style={{ backgroundImage: `url(${backgroundImage})` }}>
-            <button className="auth-btn" onClick={getLogin}>Let's Get Started</button>
+            <button className="primary-btn" onClick={getLogin}>Let's Get Started</button>
         </div>
     );
 }

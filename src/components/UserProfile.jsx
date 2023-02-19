@@ -35,17 +35,19 @@ const UserProfile = () => {
   } else if (selectedCategory === "Start Stream") {
     page = <startStream />;
   } else if (selectedCategory === "Upload") {
-    page = <Videos videos={videos} path={path} />;
+    page = <Videos videos={videos} path={path} selectedCategory={selectedCategory} />;
   } else if (selectedCategory === "Music") {
-    page = <Videos videos={videos} path={path} />;
+    page = <Videos videos={videos} path={path} selectedCategory={selectedCategory} />;
   } else if (selectedCategory === "Education") {
-    page = <Videos videos={videos} path={path} />;
+    page = <Videos videos={videos} path={path} selectedCategory={selectedCategory} />;
   } else if (selectedCategory === "Movie") {
-    page = <Videos videos={videos} path={path} />;
+    page = <Videos videos={videos} path={path} selectedCategory={selectedCategory} />;
   } else if (selectedCategory === "Gaming") {
-    page = <Videos videos={videos} path={path} />;
+    page = <Videos videos={videos} path={path} selectedCategory={selectedCategory} />;
+  } else if (selectedCategory === "My Subscriptions"){
+    page = <Videos videos={videos} path={path} selectedCategory={selectedCategory} />;
   } else {
-    page = <Videos videos={videos} path={path} />;
+    
   }
 
   useEffect(() => {
