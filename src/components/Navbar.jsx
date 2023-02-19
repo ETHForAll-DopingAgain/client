@@ -15,26 +15,11 @@ const Navbar = () => {
   const isloggedIn = auth.isLoggedIn;
   console.log(isloggedIn)
   console.log(auth.loading)
-  // if(!isloggedIn && !auth.loading){
-  //   window.location.href = "http://localhost:3000/auth";
-  // }
+  
   if (!IDs) {
     localStorage.setItem("videos", JSON.stringify({ IDs: [] }));
   }
 
-  const delay = ms => new Promise(
-    resolve => setTimeout(resolve, ms)
-  );
-
-  useEffect(() => {
-    async function check() {
-      // if (!auth.loading) {
-        await delay(1000);
-        console.log("here", isloggedIn);
-      // }
-    }
-    check();
-  }, [auth.loading, isloggedIn]);
   return (
     <>
       <Stack direction="row" alignItems="center" p={2} sx={{ position: "sticky", background: '#000', top: 0, justifyContent: "space-between" }}>
