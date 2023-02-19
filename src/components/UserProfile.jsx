@@ -4,6 +4,7 @@ import { Box, Stack, Typography, Avatar } from "@mui/material";
 import { fetchFromAPI } from "../utils/fetchFromAPI";
 import { Videos, Sidebar } from "./";
 import { AuthProvider } from '@arcana/auth';
+import { Loader } from "./";
 
 const UserProfile = () => {
   const [selectedCategory, setSelectedCategory] = useState(null);
@@ -35,19 +36,17 @@ const UserProfile = () => {
   } else if (selectedCategory === "Start Stream") {
     page = <startStream />;
   } else if (selectedCategory === "Upload") {
-    page = <Videos videos={videos} path={path} selectedCategory={selectedCategory} />;
+    page = <Videos videos={videos} path={path} />;
   } else if (selectedCategory === "Music") {
-    page = <Videos videos={videos} path={path} selectedCategory={selectedCategory} />;
+    page = <Videos videos={videos} path={path} />;
   } else if (selectedCategory === "Education") {
-    page = <Videos videos={videos} path={path} selectedCategory={selectedCategory} />;
+    page = <Videos videos={videos} path={path} />;
   } else if (selectedCategory === "Movie") {
-    page = <Videos videos={videos} path={path} selectedCategory={selectedCategory} />;
+    page = <Videos videos={videos} path={path} />;
   } else if (selectedCategory === "Gaming") {
-    page = <Videos videos={videos} path={path} selectedCategory={selectedCategory} />;
-  } else if (selectedCategory === "My Subscriptions"){
-    page = <Videos videos={videos} path={path} selectedCategory={selectedCategory} />;
+    page = <Videos videos={videos} path={path} />;
   } else {
-    
+    page = <Videos videos={videos} path={path} />;
   }
 
   useEffect(() => {
@@ -57,10 +56,10 @@ const UserProfile = () => {
       .then((data) => setVideos(data.items))
   }, [selectedCategory]);
 
+     if(!pub_key) return <Loader />;
+
   return (
     <Stack sx={{ flexDirection: { sx: "column", md: "row" } }}>
-
-
       <Box sx={{ height: { sx: "auto", md: "92vh" }, borderRight: "1px solid #3d3d3d", px: { sx: 0, md: 2 } }}>
         <Sidebar selectedCategory={selectedCategory} setSelectedCategory={setSelectedCategory} />
       </Box>
@@ -70,10 +69,10 @@ const UserProfile = () => {
           <Stack spacing={1} sx={{ marginLeft: "8px" }}>
             <Typography variant="h5" color="white">Name: {username} </Typography>
             <Typography variant="h6" color="gray">E-mail: {email}</Typography>
-            <Stack sx={{ flexDirection: 'row' }} gap={2}>
+            <Stack sx={{ flexDirection: 'column' }} gap={2}>
               <Typography variant="subtitle1" color="gray">Address: {address}</Typography>
-              <Typography variant="subtitle1" color="gray">||</Typography>
-              <Typography variant="subtitle1" color="gray">Public Key: {pub_key.slice(0,40)}... </Typography>
+              {/* <Typography variant="subtitle1" color="gray">||</Typography> */}
+              <Typography variant="subtitle1" color="gray">Public Key: {pub_key} </Typography>
             </Stack>
           </Stack>
         </Stack>

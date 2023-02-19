@@ -190,3 +190,8 @@ input[type="file"] {
   height: 80vh;
   width: 100%;
 }
+
+.subtitle1{
+  display: block;
+  text-overflow: clip;
+}
