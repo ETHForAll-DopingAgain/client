@@ -1,19 +1,17 @@
 import React, { useEffect, useState } from "react";
 import { Box, Stack, Typography } from "@mui/material";
-import StartStream from "../pages/startStream";
-import ReactPlayer from "react-player";
 
 import { fetchFromAPI } from "../utils/fetchFromAPI";
 import { Videos, Sidebar } from "./";
 
-const Feed = () => {
+const UserProfile = () => {
   const [selectedCategory, setSelectedCategory] = useState("Live");
   const [videos, setVideos] = useState(null);
 
   let page;
   if(selectedCategory === "Live") {
   } else if(selectedCategory === "Start Stream") {
-    page = <StartStream />;
+    page = <startStream />;
   } else if(selectedCategory === "Upload") {
     page = <Videos videos={videos} />;
   } else if(selectedCategory === "Music") {
@@ -45,14 +43,11 @@ const Feed = () => {
           {selectedCategory} <span style={{ color: "#FC1503" }}></span>
         </Typography>
 
-        {/* <StartStream /> */}
         {page}
-        {/* <Videos videos={videos} /> */}
-        <ReactPlayer url={`https://gateway.lighthouse.storage/ipfs/QmNb6cbYXgdTsSn6Gnn6fnaApEjubPtHDkyZ2fT2GowSWr`} className="react-player-icon"/>
 
       </Box>
     </Stack>
   );
 };
 
-export default Feed;
+export default UserProfile;
