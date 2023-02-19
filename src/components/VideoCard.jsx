@@ -11,6 +11,7 @@ import {
 } from "../utils/constants";
 import { ABI } from "./abi";
 import { providers, ethers } from "ethers";
+import { InsertEmoticon } from "@mui/icons-material";
 
 
 const checkSubscription = async () => {
@@ -35,65 +36,49 @@ const checkSubscription = async () => {
 };
 
 const VideoCard = ({
-  video: {
-    id: { videoId },
-    snippet,
-  },
-  path,
+  video,
 }) => {
 const navigate = useNavigate();
 return(
   <Card
     sx={{
-      width: { xs: "100%", sm: "358px", md: "320px" },
+      width: { xs: "100%", sm: "357px", md: "318px" },
       boxShadow: "none",
       borderRadius: 5,
     }}
   >
     <ReactPlayer
-      url={`https://gateway.lighthouse.storage/ipfs/QmNb6cbYXgdTsSn6Gnn6fnaApEjubPtHDkyZ2fT2GowSWr`}
+      url={`https://gateway.lighthouse.storage/ipfs/${video.hash}`}
       className="react-player-icon"
       onClick={async () => {
           if(await checkSubscription()){
-                      navigate(
-                        videoId
-                          ? `/video/093fgts6f38urh0z`
-                          : `/video/cV2gBU6hKfY`,
-                        {
-                          replace: true,
-                        }
-                      );
           }
           else{
             navigate(
-              `/subscribe?videoId=QmTAznyH583xUgEyY5zdrPB2LSGY7FUBPDddWKj58GmBgp`,
+              `/subscribe?videoId=${video.hash}`,
               { replace: true }
-            ); 
+            );
           }
       }}
     />
-    <CardContent sx={{ backgroundColor: "#1E1E1E", height: "90px" }}>
+    <CardContent sx={{ backgroundColor: "#1E1E1E", height: "50px" }}>
       <Typography
         variant="subtitle1"
         fontWeight="bold"
         onClick={async () => {
-          await checkSubscription()
-          console.log("hi")
-          if(checkSubscription){
-                      navigate(
-                        videoId ? `/video/${videoId}` : `/video/cV2gBU6hKfY`,
-                        {
-                          replace: true,
-                        }
-                      );
-          }
-          else{
-            console.log("ma chuda")
-          }
+            if(await checkSubscription()){
+            }
+            else{
+              navigate(
+                `/subscribe?videoId=${video.hash}`,
+                { replace: true }
+              );
+            }
+
 ;}}
         color="#FFF"
       >
-        {snippet?.title.slice(0, 60) || demoVideoTitle.slice(0, 60)}
+        {video.name}
       </Typography>
       {/* <Link to={snippet?.channelId ? `/channel/${snippet?.channelId}` : demoChannelUrl} > */}
       <Typography variant="subtitle2" color="gray">
@@ -101,7 +86,7 @@ return(
         {/* <CheckCircleIcon sx={{ fontSize: "12px", color: "gray", ml: "5px" }} /> */}
       </Typography>
       {/* </Link> */}
-      { path == "user" &&<Typography variant="subtitle2" color="gray">Subscribers: 6969</Typography>}
+      {/* { path == "user" &&<Typography variant="subtitle2" color="gray">Subscribers: 6969</Typography>} */}
     </CardContent>
   </Card>
 )

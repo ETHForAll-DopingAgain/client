@@ -38,22 +38,8 @@ const VideoDetail = () => {
   console.log(client);
 
   useEffect(() => {
-    setVideos(null);
-
-    fetchFromAPI(`search?part=snippet&q=${1}`).then((data) =>
-      setVideos(data.items)
-    );
-  }, [1]);
-
-  // useEffect(() => {
-  //   fetchFromAPI(`videos?part=snippet,statistics&id=${id}`)
-  //     .then((data) => setVideoDetail(data.items[0]))
-
-  //   fetchFromAPI(`search?part=snippet&relatedToVideoId=${id}&type=video`)
-  //     .then((data) => setVideos(data.items))
-  // }, [id]);
-
-  // const { snippet: { title, channelId, channelTitle }, statistics: { viewCount, likeCount } } = videoDetail;
+    setVideos(`https://gateway.lighthouse.storage/ipfs/QmNb6cbYXgdTsSn6Gnn6fnaApEjubPtHDkyZ2fT2GowSWr`);
+  });
 
   return (
     <Box minHeight="95vh">
@@ -76,20 +62,6 @@ const VideoDetail = () => {
               py={1}
               px={2}
             >
-              {/* <Link to={`/channel/${channelId}`}> */}
-              {/* <Typography variant={{ sm: "subtitle1", md: 'h6' }}  color="#fff" > */}
-              {/* {channelTitle} */}
-              {/* <CheckCircleIcon sx={{ fontSize: "12px", color: "gray", ml: "5px" }} /> */}
-              {/* </Typography> */}
-              {/* </Link> */}
-              {/* <Stack direction="row" gap="20px" alignItems="center">
-                <Typography variant="body1" sx={{ opacity: 0.7 }}>
-                  {parseInt(viewCount).toLocaleString()} views
-                </Typography>
-                <Typography variant="body1" sx={{ opacity: 0.7 }}>
-                  {parseInt(likeCount).toLocaleString()} likes
-                </Typography>
-              </Stack> */}
             </Stack>
           </Box>
         </Box>

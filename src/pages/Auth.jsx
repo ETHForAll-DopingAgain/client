@@ -10,7 +10,8 @@ const Arcana = () => {
         window.location.href = "http://localhost:3000/feed";
     }
     return (
-        <div>
+        <div className="VideoInput">
+            <div>
             {auth.loading ? (
                 "Loading"
             ) : auth.isLoggedIn ? (
@@ -20,6 +21,7 @@ const Arcana = () => {
                     <Auth externalWallet={true} theme={"dark"} onLogin={onLogin} />
                 </div>
             )}
+            </div>
         </div>
     );
 }

@@ -90,11 +90,14 @@ const VideoInput = () => {
     console.log(response.data.asset.playbackId);
     let videos = localStorage.getItem("videos");
     videos = JSON.parse(videos);
-    videos = videos.IDs.push({
+    console.log("videos before  parse", videos)
+    console.log("videos", videos.IDs)
+    videos.IDs.push({
       name: title,
       playbackId: response.data.asset.playbackId,
       hash: output.data.Hash,
     });
+    console.log("videos", videos)
     localStorage.setItem("videos", JSON.stringify(videos));
     await addToChain
       .connect(signer)
