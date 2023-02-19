@@ -37,6 +37,14 @@ const VideoDetail = () => {
   const { id } = useParams();
   console.log(client);
 
+  useEffect(() => {
+    setVideos(null);
+
+    fetchFromAPI(`search?part=snippet&q=${1}`).then((data) =>
+      setVideos(data.items)
+    );
+  }, [1]);
+
   // useEffect(() => {
   //   fetchFromAPI(`videos?part=snippet,statistics&id=${id}`)
   //     .then((data) => setVideoDetail(data.items[0]))
@@ -54,7 +62,9 @@ const VideoDetail = () => {
           <Box sx={{ width: "100%", position: "sticky", top: "86px" }}>
             {/* <ReactPlayer url={`https://gateway.lighthouse.storage/ipfs/QmNb6cbYXgdTsSn6Gnn6fnaApEjubPtHDkyZ2fT2GowSWr`} className="react-player" controls /> */}
             <LivepeerConfig client={client} theme={livepeerTheme}>
+              <div className="playerDiv">
               <Player playbackId={id} loop showTitle={false} />
+              </div>
             </LivepeerConfig>
             <Typography color="#fff" variant="h5" fontWeight="bold" p={2}>
               {/* {title} */}
@@ -89,9 +99,10 @@ const VideoDetail = () => {
           justifyContent="center"
           alignItems="center"
         >
-          {/* <Videos videos={videos} direction="column" /> */}
+          <Videos videos={videos} direction="column" />
         </Box>
       </Stack>
+
     </Box>
   );
 };

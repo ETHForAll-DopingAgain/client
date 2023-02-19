@@ -159,11 +159,16 @@ input[type="file"] {
   border-radius: 8px;
   height:60px;
   width:180px;
-  margin: 40vh 0 0 40vw;
+  margin: 43vh 0 0 45vw;
   transition: 200ms linear;
 }
 
 .auth-btn:hover {
   color: black;
   background-color: rgb(159, 45, 45);
+}
+
+.playerDiv{
+  height: 80vh;
+  width: 100%;
 }
