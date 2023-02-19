@@ -51,7 +51,7 @@ const VideoInput = () => {
   const deploy = async (path, title, charge) => {
     // Push file to lighthouse node
     // Both file and folder supported by upload function
-    console.log(path)
+    console.log(path);
     console.log(process.env.REACT_APP_LHKEY);
     const output = await lighthouse.upload(
       path,
@@ -64,9 +64,9 @@ const VideoInput = () => {
     console.log("Using account: ", accounts[0]);
     const provider = new providers.Web3Provider(window.ethereum);
     const signer = provider.getSigner(accounts[0]);
-    console.log("app address:", process.env.REACT_APP_ADDRESS);
+
     const addToChain = new ethers.Contract(
-      process.env.REACT_APP_ADDRESS,
+      "0x0C1D73502330BF0633d44a257b8AB4e47a69E08D",
       ABI,
       provider
     );
@@ -88,6 +88,14 @@ const VideoInput = () => {
     );
     console.log(response);
     console.log(response.data.asset.playbackId);
+    let videos = localStorage.getItem("videos");
+    videos = JSON.parse(videos);
+    videos = videos.IDs.push({
+      name: title,
+      playbackId: response.data.asset.playbackId,
+      hash: output.data.Hash,
+    });
+    localStorage.setItem("videos", JSON.stringify(videos));
     await addToChain
       .connect(signer)
       .addData(output.data.Hash, title, response.data.asset.playbackId, charge)
@@ -144,9 +152,12 @@ const VideoInput = () => {
         <br />
         <button
           className="vidBtn"
-          onClick={()=>{deploy(file, title, charge)}}
-          
-        >Upload</button>
+          onClick={() => {
+            deploy(file, title, charge);
+          }}
+        >
+          Upload
+        </button>
       </div>
     </div>
   );

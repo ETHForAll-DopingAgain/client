@@ -6,6 +6,9 @@ const onLogin = async () => {
 
 const Arcana = () => {
     const auth = useAuth();
+    if(auth.isLoggedIn){
+        window.location.href = "http://localhost:3000/feed";
+    }
     return (
         <div>
             {auth.loading ? (
@@ -14,7 +17,7 @@ const Arcana = () => {
                 <p>Logged In</p>
             ) : (
                 <div>
-                    <Auth externalWallet={true} theme={"light"} onLogin={onLogin} />
+                    <Auth externalWallet={true} theme={"dark"} onLogin={onLogin} />
                 </div>
             )}
         </div>
