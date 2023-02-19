@@ -66,7 +66,7 @@ const VideoInput = () => {
     const signer = provider.getSigner(accounts[0]);
 
     const addToChain = new ethers.Contract(
-      "0x0C1D73502330BF0633d44a257b8AB4e47a69E08D",
+      process.env.REACT_APP_ADDRESS,
       ABI,
       provider
     );
