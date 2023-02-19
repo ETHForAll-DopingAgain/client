@@ -28,14 +28,14 @@ const StartStream = () => {
           display: 'flex',
           justifyContent: 'center',
           alignItems: 'center',
-          fontSize: '3rem',
+          fontSize: '2rem',
           fontWeight: 'bold',
         }}>
           Enter Stream Details
         </div>
 
         <form className='startStream__form' onSubmit={handleSubmit} style={{
-          width: '100%',
+          width: '80%',
           height: '80%',
           display: 'flex',
           flexDirection: 'column',
@@ -44,7 +44,7 @@ const StartStream = () => {
 
           <input className='startStream__form__input' type='text' placeholder='Stream Name' style={{
             width: '30%',
-            height: '10%',
+            height: '8%',
             borderRadius: '1rem',
             marginTop: '3rem',
             border: '0.01px black',
@@ -54,7 +54,7 @@ const StartStream = () => {
 
           <input className='startStream__form__input' type='text' placeholder='Cost' style={{
             width: '30%',
-            height: '10%',
+            height: '8%',
             marginTop: '3rem',
             borderRadius: '1rem',
             border: '0.01px black',
@@ -63,7 +63,7 @@ const StartStream = () => {
           }} />
 
           <button className='startStream__form__button' type='submit' style={{
-            width: '30%',
+            width: '20%',
             height: '10%',
             borderRadius: '2rem',
             marginTop: '3rem',

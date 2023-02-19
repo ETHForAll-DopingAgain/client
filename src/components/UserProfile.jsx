@@ -167,7 +167,7 @@ const UserProfile = () => {
       <div className="userVid">
         <Card
           sx={{
-            width: { xs: "100%", sm: "357px", md: "318px" },
+            width: { xs: "100%", sm: "350px", md: "328px" },
             boxShadow: "none",
             borderRadius: 5,
           }}
