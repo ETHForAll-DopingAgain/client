@@ -195,3 +195,9 @@ input[type="file"] {
   display: block;
   text-overflow: clip;
 }
+
+.userVid{
+  position: absolute;
+  bottom: 7rem;
+  left: 23rem;
+}

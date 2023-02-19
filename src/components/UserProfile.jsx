@@ -6,6 +6,8 @@ import { fetchFromAPI } from "../utils/fetchFromAPI";
 import { Videos, Sidebar } from "./";
 import { AuthProvider } from '@arcana/auth';
 import { Loader } from "./";
+import {  Card, CardContent, CardMedia } from "@mui/material";
+import ReactPlayer from "react-player";
 
 const UserProfile = () => {
   const [selectedCategory, setSelectedCategory] = useState(null);
@@ -50,15 +52,9 @@ const UserProfile = () => {
     page = <Videos videos={videos} />;
   }
 
-  useEffect(() => {
-    setVideos(null);
-
-    fetchFromAPI(`search?part=snippet&q=${selectedCategory}`)
-      .then((data) => setVideos(data.items))
-  }, [selectedCategory]);
-
      if(!pub_key) return <Loader />;
-
+      var x= JSON.parse(localStorage.getItem("videos")).IDs[1]
+      console.log(x.name);
   return (
     <Stack sx={{ flexDirection: { sx: "column", md: "row" } }}>
       <Box sx={{ height: { sx: "auto", md: "92vh" }, borderRight: "1px solid #3d3d3d", px: { sx: 0, md: 2 } }}>
@@ -80,6 +76,32 @@ const UserProfile = () => {
         <Typography variant="h3" color="white">{username}'s Videos</Typography>
         {/* {page} */}
       </Stack>
+
+<div className="userVid">
+      <Card
+    sx={{
+      width: { xs: "100%", sm: "357px", md: "318px" },
+      boxShadow: "none",
+      borderRadius: 5,
+    }}
+  >
+    <ReactPlayer
+      url={`https://gateway.lighthouse.storage/ipfs/${x.hash}`}
+      className="react-player-icon"
+    />
+    <CardContent sx={{ backgroundColor: "#1E1E1E", height: "50px" }}>
+      <Typography
+        variant="subtitle1"
+        fontWeight="bold"
+        color="#FFF"
+      >
+        {x.name}
+      </Typography>
+      <Typography variant="subtitle2" color="gray"></Typography>
+      </CardContent>
+  </Card>
+  </div>
+
     </Stack>
 
   );

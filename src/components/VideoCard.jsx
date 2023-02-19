@@ -26,7 +26,7 @@ const checkSubscription = async () => {
     ABI,
     provider
   );
-
+ 
   const result = await chainInteract
     .connect(signer)
     .checkIsSubscribed("QmNb6cbYXgdTsSn6Gnn6fnaApEjubPtHDkyZ2fT2GowSWr")
@@ -38,6 +38,7 @@ const VideoCard = ({
   video,
 }) => {
 const navigate = useNavigate();
+
 
 return(
   <Card
