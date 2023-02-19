@@ -134,3 +134,11 @@ input[type="file"] {
 .red{
   color:red
 }
+
+.div:hover{
+  background-color: rgb(211, 209, 209);
+}
+
+.true{
+  background-color: rgb(211, 209, 209);
+}

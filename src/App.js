@@ -10,6 +10,7 @@ import {
   VideoInput,
   Stream,
   // UserProfile,
+  Subscribe
 } from "./components";
 
 const App = () => (
@@ -20,6 +21,7 @@ const App = () => (
         <Route exact path="/" element={<Feed />} />
         <Route path="/upload" element={<VideoInput />} />
         <Route path="/stream" element={<Stream />} />
+        <Route path="/subscribe" element={<Subscribe />} />
         <Route path="/video/:id" element={<VideoDetail />} />
         <Route path="/channel/:id" element={<ChannelDetail />} />
         <Route path="/search/:searchTerm" element={<SearchFeed />} />
