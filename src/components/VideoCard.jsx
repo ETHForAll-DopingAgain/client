@@ -13,7 +13,6 @@ import { ABI } from "./abi";
 import { providers, ethers } from "ethers";
 import { InsertEmoticon } from "@mui/icons-material";
 
-
 const checkSubscription = async () => {
   const accounts = await window.ethereum.request({
     method: "eth_requestAccounts",
@@ -39,6 +38,7 @@ const VideoCard = ({
   video,
 }) => {
 const navigate = useNavigate();
+
 return(
   <Card
     sx={{

@@ -33,13 +33,17 @@ const livepeerTheme = {
 
 const VideoDetail = () => {
   const [videoDetail, setVideoDetail] = useState(null);
-  const [videos, setVideos] = useState(null);
+  // const [videos, setVideos] = useState(null);
+  const videos=JSON.parse(localStorage.getItem("videos")).IDs
   const { id } = useParams();
   console.log(client);
 
-  useEffect(() => {
-    setVideos(`https://gateway.lighthouse.storage/ipfs/QmNb6cbYXgdTsSn6Gnn6fnaApEjubPtHDkyZ2fT2GowSWr`);
-  });
+  // const videos=[{name: "hi", playbackId: "1203kgztg5lylb6y", hash: "QmTAznyH583xUgEyY5zdrPB2LSGY7FUBPDddWKj58GmBgp"}]
+
+  // useEffect(async () => {
+
+  //     console.log(videos);
+  // },[]);
 
   return (
     <Box minHeight="95vh">
