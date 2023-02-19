@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Box, Stack, Typography, Avatar } from "@mui/material";
-
+import StartStream from "../pages/startStream";
+import Upload from "../components/VideoInput";
 import { fetchFromAPI } from "../utils/fetchFromAPI";
 import { Videos, Sidebar } from "./";
 import { AuthProvider } from '@arcana/auth';
@@ -34,19 +35,19 @@ const UserProfile = () => {
   let page;
   if (selectedCategory === "Live") {
   } else if (selectedCategory === "Start Stream") {
-    page = <startStream />;
+    page = <StartStream />;
   } else if (selectedCategory === "Upload") {
-    page = <Videos videos={videos} path={path} />;
+    page = <Upload />;
   } else if (selectedCategory === "Music") {
-    page = <Videos videos={videos} path={path} />;
+    page = <Videos videos={videos} />;
   } else if (selectedCategory === "Education") {
-    page = <Videos videos={videos} path={path} />;
+    page = <Videos videos={videos} />;
   } else if (selectedCategory === "Movie") {
-    page = <Videos videos={videos} path={path} />;
+    page = <Videos videos={videos} />;
   } else if (selectedCategory === "Gaming") {
-    page = <Videos videos={videos} path={path} />;
+    page = <Videos videos={videos} />;
   } else {
-    page = <Videos videos={videos} path={path} />;
+    page = <Videos videos={videos} />;
   }
 
   useEffect(() => {
