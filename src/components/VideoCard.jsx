@@ -22,7 +22,7 @@ const checkSubscription = async () => {
   const signer = provider.getSigner(accounts[0]);
 
   const chainInteract = new ethers.Contract(
-    "0x0C1D73502330BF0633d44a257b8AB4e47a69E08D",
+    process.env.REACT_APP_ADDRESS,
     ABI,
     provider
   );
@@ -55,14 +55,19 @@ return(
       onClick={async () => {
           if(await checkSubscription()){
                       navigate(
-                        videoId ? `/video/${videoId}` : `/video/cV2gBU6hKfY`,
+                        videoId
+                          ? `/video/093fgts6f38urh0z`
+                          : `/video/cV2gBU6hKfY`,
                         {
                           replace: true,
                         }
                       );
           }
           else{
-            console.log("ma chuda")
+            navigate(
+              `/subscribe?videoId=QmTAznyH583xUgEyY5zdrPB2LSGY7FUBPDddWKj58GmBgp`,
+              { replace: true }
+            ); 
           }
       }}
     />

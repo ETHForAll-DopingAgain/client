@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Box, Stack, Typography } from "@mui/material";
 import StartStream from "../pages/startStream";
+import Upload from "../components/VideoInput";
 import ReactPlayer from "react-player";
 
 import { fetchFromAPI } from "../utils/fetchFromAPI";
@@ -11,18 +12,18 @@ const Feed = () => {
   const [videos, setVideos] = useState(null);
 
   let page;
-  if(selectedCategory === "Live") {
-  } else if(selectedCategory === "Start Stream") {
+  if (selectedCategory === "Live") {
+  } else if (selectedCategory === "Start Stream") {
     page = <StartStream />;
-  } else if(selectedCategory === "Upload") {
+  } else if (selectedCategory === "Upload") {
+    page = <Upload />;
+  } else if (selectedCategory === "Music") {
     page = <Videos videos={videos} />;
-  } else if(selectedCategory === "Music") {
+  } else if (selectedCategory === "Education") {
     page = <Videos videos={videos} />;
-  } else if(selectedCategory === "Education") {
+  } else if (selectedCategory === "Movie") {
     page = <Videos videos={videos} />;
-  } else if(selectedCategory === "Movie") {
-    page = <Videos videos={videos} />;
-  } else if(selectedCategory === "Gaming") {
+  } else if (selectedCategory === "Gaming") {
     page = <Videos videos={videos} />;
   } else {
   }
@@ -30,26 +31,38 @@ const Feed = () => {
   useEffect(() => {
     setVideos(null);
 
-    fetchFromAPI(`search?part=snippet&q=${selectedCategory}`)
-      .then((data) => setVideos(data.items))
-    }, [selectedCategory]);
+    fetchFromAPI(`search?part=snippet&q=${selectedCategory}`).then((data) =>
+      setVideos(data.items)
+    );
+  }, [selectedCategory]);
 
   return (
     <Stack sx={{ flexDirection: { sx: "column", md: "row" } }}>
-      <Box sx={{ height: { sx: "auto", md: "92vh" }, borderRight: "1px solid #3d3d3d", px: { sx: 0, md: 2 } }}>
-        <Sidebar selectedCategory={selectedCategory} setSelectedCategory={setSelectedCategory} />
+      <Box
+        sx={{
+          height: { sx: "auto", md: "92vh" },
+          borderRight: "1px solid #3d3d3d",
+          px: { sx: 0, md: 2 },
+        }}
+      >
+        <Sidebar
+          selectedCategory={selectedCategory}
+          setSelectedCategory={setSelectedCategory}
+        />
       </Box>
 
       <Box p={2} sx={{ overflowY: "auto", height: "90vh", flex: 2 }}>
-        <Typography variant="h4" fontWeight="bold" mb={2} sx={{ color: "white" }}>
+        <Typography
+          variant="h4"
+          fontWeight="bold"
+          mb={2}
+          sx={{ color: "white" }}
+        >
           {selectedCategory} <span style={{ color: "#FC1503" }}></span>
         </Typography>
 
         {/* <StartStream /> */}
         {page}
-        {/* <Videos videos={videos} /> */}
-        <ReactPlayer url={`https://gateway.lighthouse.storage/ipfs/QmNb6cbYXgdTsSn6Gnn6fnaApEjubPtHDkyZ2fT2GowSWr`} className="react-player-icon"/>
-
       </Box>
     </Stack>
   );

@@ -64,9 +64,9 @@ const VideoInput = () => {
     console.log("Using account: ", accounts[0]);
     const provider = new providers.Web3Provider(window.ethereum);
     const signer = provider.getSigner(accounts[0]);
-
+    console.log("app address:", process.env.REACT_APP_ADDRESS);
     const addToChain = new ethers.Contract(
-      "0x0C1D73502330BF0633d44a257b8AB4e47a69E08D",
+      process.env.REACT_APP_ADDRESS,
       ABI,
       provider
     );

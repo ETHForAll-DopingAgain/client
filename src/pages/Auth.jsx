@@ -1,7 +1,7 @@
 import { Auth, useAuth } from "@arcana/auth-react";
 
 const onLogin = async () => {
-    window.location.href = "http://localhost:3000/";
+    window.location.href = "http://localhost:3000/feed";
 }
 
 const Arcana = () => {

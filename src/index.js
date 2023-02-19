@@ -11,7 +11,5 @@ const provider = new AuthProvider(`8afe688dafd1119144bb600dae348c712add9daf`);
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
 root.render(
-  <ProvideAuth provider={provider}>
     <App />
-  </ProvideAuth>
 );
